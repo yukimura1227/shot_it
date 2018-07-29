@@ -21,7 +21,7 @@
   },
   "build": {
     "asar": false,
-    "appId": "com.electron.capture_the_paiza",
+    "appId": "com.electron.yukimura1227.shot_it",
     "mac": {
       "target": [
         "zip",
