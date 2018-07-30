@@ -3,38 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>shot it</title>
+  <link rel="stylesheet" href="node_modules/uikit/dist/css/uikit.css" />
 </head>
 <body>
-  <section>
-    <h2>設定変更</h2>
-    <div>
-      <button id="js-open-url-list">スクショを撮るURLリストを編集する</button>
+  <div class="uk-container">
+    <div class="uk-margin -uk-card uk-card-default -uk-card-body">
+      <h2 class="uk-card-title">設定変更</h2>
+      <div class="uk-margin-bottom">
+        <button id="js-open-url-list" class="uk-button uk-button-primary uk-width-1-1">スクショを撮るURLリストを編集する</button>
+      </div>
+      <div>
+        <button id="js-open-origin-directory" class="uk-button uk-button-primary uk-width-1-1">仕様画像のフォルダを開く</button>
+        <br/>
+        ※ ここに保存されている画像ファイルを元に、自動的に画像の差分を取得します
+        取得したスクリーンショットが問題なければ、ここにいれておくとよいです。
+      </div>
     </div>
-    <div>
-      <button id="js-open-origin-directory">仕様画像のフォルダを開く</button>
-      <br/>
-      ※ ここに保存されている画像ファイルを元に、自動的に画像の差分を取得します
-      取得したスクリーンショットが問題なければ、ここにいれておくとよいです。
+    <div class="uk-margin -uk-card uk-card-default -uk-card-body">
+      <h2 class="uk-card-title">実行する</h2>
+      <div>
+        <button id="js-take-all-screenshot" class="uk-button uk-button-primary uk-width-1-1">スクショを撮る</button>
+        <br/>
+        ※ 実行には時間がかかります。下記のボタンより、結果画像のフォルダを開き
+        画像が全て保存されるまでお待ちください。
+      </div>
     </div>
-  </section>
-  <section>
-    <h2>実行する</h2>
-    <div>
-      <button id="js-take-all-screenshot">スクショを撮る</button>
-      <br/>
-      ※ 実行には時間がかかります。下記のボタンより、結果画像のフォルダを開き
-      画像が全て保存されるまでお待ちください。
+    <div class="uk-margin -uk-card uk-card-default -uk-card-body">
+      <h2 class="uk-card-title">確認する</h2>
+      <div class="uk-margin-bottom">
+        <button id="js-open-test_result-directory" class="uk-button uk-button-primary uk-width-1-1">結果画像のフォルダを開く</button>
+      </div>
+      <div>
+        <button id="js-open-diff-directory" class="uk-button uk-button-primary uk-width-1-1">差分画像のフォルダを開く</button>
+      </div>
     </div>
-  </section>
-  <section>
-    <h2>確認する</h2>
-    <div>
-      <button id="js-open-test_result-directory">結果画像のフォルダを開く</button>
-    </div>
-    <div>
-      <button id="js-open-diff-directory">差分画像のフォルダを開く</button>
-    </div>
-  </section>
+  </div>
   <script>
     const ipc = require('electron').ipcRenderer
     document.getElementById('js-take-all-screenshot').addEventListener('click', (event) => {

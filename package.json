@@ -17,7 +17,8 @@
     "imagemin-pngquant": "^5.1.0",
     "json-parse-async": "^1.0.3",
     "pixelmatch": "^4.0.2",
-    "puppeteer": "^1.6.0"
+    "puppeteer": "^1.6.0",
+    "uikit": "^3.0.0-rc.10"
   },
   "build": {
     "asar": false,
