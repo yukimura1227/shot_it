@@ -52,7 +52,12 @@ function take_all_screen_shot() {
         var url_info_list = content.url_info_list
 
         await Promise.all( url_info_list.map(async (url_info) => {
-          await take_screen_shot(url_info.url, url_info.filename);
+          if(url_info.filename == undefined) {
+            var filename = url_info.url.replace(/[:,\/\.]/g, '_') + '.png'
+          } else {
+            var filename = url_info.filename
+          }
+          await take_screen_shot(url_info.url, filename);
         }));
 
         await global.browser.close();
