@@ -35,10 +35,17 @@ async function diff(filename) {
 module.exports.take_all_screen_shot = take_all_screen_shot;
 function take_all_screen_shot() {
   (async () => {
+    const revision = require('puppeteer/package.json').puppeteer.chromium_revision
+    const browserFetcher = puppeteer.createBrowserFetcher();
+    const revisionInfo = await browserFetcher.download(revision);
+    var args = ''
+    if(browserFetcher.platform() == 'linux') {
+      args = ['--no-sandbox']
+    }
     var date = new Date();
     global.result_dir = app.getPath('userData') + '/test_result/' + date.getTime();
     fs.mkdirSync(global.result_dir);
-    global.browser = await puppeteer.launch();
+    global.browser = await puppeteer.launch({executablePath: revisionInfo.executablePath, args: args});
 
     parseJSON(fs.readFileSync(app.getPath('userData') + '/url_list.json', 'utf8'))
       .then(async (content) => {
