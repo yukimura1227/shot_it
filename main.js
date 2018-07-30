@@ -3,6 +3,7 @@ const electron        = require("electron");
 const {app, BrowserWindow, ipcMain, shell} = electron;
 const fse = require('fs-extra')
 initialize_env();
+
 const screen_shot_util = require('./screen_shot_util.js');
 
 global.mainWindow = null;
@@ -60,7 +61,7 @@ ipcMain.on('open_origin_directory', (event, arg) => {
 });
 
 function initialize_env() {
-  var copy_targets = ['url_list.json'];
+  var copy_targets = ['url_list.json', 'custom.js'];
   copy_targets.forEach( (filename) => {
     console.log(filename)
     var copy_from = __dirname + '/' + filename;

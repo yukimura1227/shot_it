@@ -9,6 +9,8 @@ const {app} = electron;
 const PNG = require('pngjs').PNG;
 const pixelmatch = require('pixelmatch');
 
+const custom = require(app.getPath('userData') + '/custom.js');
+
 async function take_screen_shot(url, filename) {
   const page = await global.browser.newPage();
   page.setViewport({width: 1200, height: 800})
@@ -46,6 +48,9 @@ function take_all_screen_shot() {
     global.result_dir = app.getPath('userData') + '/test_result/' + date.getTime();
     fs.mkdirSync(global.result_dir);
     global.browser = await puppeteer.launch({executablePath: revisionInfo.executablePath, args: args});
+    if(typeof custom.before_screen_shot == 'function'){
+      await custom.before_screen_shot(browser );
+    }
 
     parseJSON(fs.readFileSync(app.getPath('userData') + '/url_list.json', 'utf8'))
       .then(async (content) => {
