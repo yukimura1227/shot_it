@@ -3,7 +3,7 @@ const electron        = require("electron");
 const {app, BrowserWindow, ipcMain, shell} = electron;
 const fse = require('fs-extra')
 initialize_env();
-const screen_shot_util = require('./index.js');
+const screen_shot_util = require('./screen_shot_util.js');
 
 global.mainWindow = null;
 
